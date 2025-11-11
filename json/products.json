@@ -1,0 +1,471 @@
+[
+  {
+    "name": "Apple iPhone 15 Pro",
+    "description": "A17 Bionic chip, 256GB, Titanium body, 5G enabled smartphone.",
+    "price": 1299.99,
+    "stockQty": 25,
+    "sku": "IP15PRO256",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/iphone15pro.jpg"]
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra",
+    "description": "6.9-inch Dynamic AMOLED display with quad-camera setup.",
+    "price": 1199.99,
+    "stockQty": 30,
+    "sku": "SGS24U512",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/galaxys24ultra.jpg"]
+  },
+  {
+    "name": "Sony WH-1000XM5 Headphones",
+    "description": "Wireless noise-cancelling headphones with LDAC and Alexa support.",
+    "price": 399.99,
+    "stockQty": 50,
+    "sku": "SONYWH1000XM5",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/sonywh1000xm5.jpg"]
+  },
+  {
+    "name": "Dell XPS 15 Laptop",
+    "description": "15-inch OLED display, Intel i9 processor, 32GB RAM, 1TB SSD.",
+    "price": 2199.00,
+    "stockQty": 10,
+    "sku": "DELLXPS15",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/dellxps15.jpg"]
+  },
+  {
+    "name": "Apple MacBook Air M3",
+    "description": "13-inch Retina display with Apple M3 chip and 16GB unified memory.",
+    "price": 1499.00,
+    "stockQty": 15,
+    "sku": "MBAIRM3",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/macbookairm3.jpg"]
+  },
+  {
+    "name": "Nike Air Zoom Pegasus 40",
+    "description": "Comfortable running shoes with responsive cushioning.",
+    "price": 139.99,
+    "stockQty": 40,
+    "sku": "NIKEPEG40",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/nikepegasus40.jpg"]
+  },
+  {
+    "name": "Adidas Ultraboost 23",
+    "description": "Premium running shoes with Boost midsole technology.",
+    "price": 179.99,
+    "stockQty": 35,
+    "sku": "ADULTRA23",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/adidasultraboost23.jpg"]
+  },
+  {
+    "name": "Levi’s 511 Slim Fit Jeans",
+    "description": "Classic slim fit denim jeans for everyday comfort and style.",
+    "price": 69.99,
+    "stockQty": 100,
+    "sku": "LEVIS511",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/levis511.jpg"]
+  },
+  {
+    "name": "Ray-Ban Aviator Sunglasses",
+    "description": "Timeless metal frame sunglasses with polarized lenses.",
+    "price": 159.99,
+    "stockQty": 70,
+    "sku": "RAYBANAIR",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/raybanaviator.jpg"]
+  },
+  {
+    "name": "Fossil Hybrid Smartwatch",
+    "description": "Classic analog design with smart features like notifications and fitness tracking.",
+    "price": 199.99,
+    "stockQty": 20,
+    "sku": "FOSHYBSMRT",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/fossilhybrid.jpg"]
+  },
+  {
+    "name": "Apple Watch Series 9",
+    "description": "Advanced smartwatch with fitness, heart rate, and temperature tracking.",
+    "price": 499.99,
+    "stockQty": 25,
+    "sku": "AWATCH9",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/applewatch9.jpg"]
+  },
+  {
+    "name": "Logitech MX Master 3S Mouse",
+    "description": "Ergonomic wireless mouse with fast scrolling and 8K DPI sensor.",
+    "price": 129.99,
+    "stockQty": 60,
+    "sku": "LOGIMX3S",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/logimxmaster3s.jpg"]
+  },
+  {
+    "name": "HP Envy 27 Monitor",
+    "description": "27-inch 4K UHD IPS monitor with ultra-thin bezels.",
+    "price": 379.99,
+    "stockQty": 18,
+    "sku": "HPENVY27",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/hpenvy27.jpg"]
+  },
+  {
+    "name": "JBL Flip 6 Bluetooth Speaker",
+    "description": "Portable waterproof speaker with powerful bass and 12h battery life.",
+    "price": 129.00,
+    "stockQty": 80,
+    "sku": "JBLFLIP6",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/jblflip6.jpg"]
+  },
+  {
+    "name": "Philips Hue Starter Kit",
+    "description": "Smart LED lighting kit with 3 bulbs and bridge for app control.",
+    "price": 199.99,
+    "stockQty": 22,
+    "sku": "PHILHUEKIT",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/philipshue.jpg"]
+  },
+  {
+    "name": "KitchenAid Stand Mixer",
+    "description": "Tilt-head stand mixer with 5-quart stainless steel bowl.",
+    "price": 399.99,
+    "stockQty": 10,
+    "sku": "KITCHMIX5",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/kitchenaidmixer.jpg"]
+  },
+  {
+    "name": "Dyson V15 Vacuum Cleaner",
+    "description": "Cordless stick vacuum with laser dust detection and HEPA filter.",
+    "price": 749.99,
+    "stockQty": 12,
+    "sku": "DYSONV15",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/dysonv15.jpg"]
+  },
+  {
+    "name": "Wilson Pro Staff Tennis Racket",
+    "description": "Professional tennis racket used by advanced players.",
+    "price": 259.99,
+    "stockQty": 15,
+    "sku": "WILPROSTAFF",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/wilsonprostaff.jpg"]
+  },
+  {
+    "name": "The Lean Startup",
+    "description": "Bestselling business book by Eric Ries on startup methodology.",
+    "price": 19.99,
+    "stockQty": 200,
+    "sku": "BOOKLEANST",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/leanstartup.jpg"]
+  },
+  {
+    "name": "Instant Pot Duo 7-in-1 Cooker",
+    "description": "Multi-function pressure cooker with slow cook, rice, and steam modes.",
+    "price": 129.99,
+    "stockQty": 50,
+    "sku": "INSTPOT7",
+    "active": true,
+    "images": ["https://cdn.twisty.com/products/instantpot7.jpg"]
+  },
+    {
+      "name": "Google Pixel 8",
+      "description": "6.2-inch OLED display, Google Tensor G3 processor, 128GB storage.",
+      "price": 799.99,
+      "stockQty": 20,
+      "sku": "GOOGLPIX8",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/googlepixel8.jpg"]
+    },
+    {
+      "name": "OnePlus 12",
+      "description": "Flagship smartphone with Snapdragon 8 Gen 3 and 120 Hz AMOLED display.",
+      "price": 899.99,
+      "stockQty": 30,
+      "sku": "ONEPLUS12",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/oneplus12.jpg"]
+    },
+    {
+      "name": "Asus ROG Zephyrus G14",
+      "description": "14-inch gaming laptop with Ryzen 9 CPU and RTX 4070 GPU.",
+      "price": 1899.99,
+      "stockQty": 12,
+      "sku": "ASUSG14",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/asusrog14.jpg"]
+    },
+    {
+      "name": "Canon EOS R10",
+      "description": "Mirrorless camera with 24 MP sensor and 4K video recording.",
+      "price": 1099.00,
+      "stockQty": 15,
+      "sku": "CANONR10",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/canonr10.jpg"]
+    },
+    {
+      "name": "GoPro Hero 12",
+      "description": "Action camera with 5.3K video, image stabilization, waterproof.",
+      "price": 449.99,
+      "stockQty": 25,
+      "sku": "GOPRO12",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/gopro12.jpg"]
+    },
+    {
+      "name": "LG C3 OLED TV 55-inch",
+      "description": "4K OLED Smart TV with HDR10, Dolby Vision, 120 Hz refresh.",
+      "price": 1599.99,
+      "stockQty": 8,
+      "sku": "LGOLED55C3",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/lgoledc3.jpg"]
+    },
+    {
+      "name": "Amazon Echo Dot 5th Gen",
+      "description": "Smart speaker with Alexa voice assistant and LED display.",
+      "price": 59.99,
+      "stockQty": 100,
+      "sku": "ECHODOT5",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/echodot5.jpg"]
+    },
+    {
+      "name": "Anker PowerCore 20000",
+      "description": "High-capacity portable power bank with fast-charge support.",
+      "price": 59.99,
+      "stockQty": 70,
+      "sku": "ANKER20000",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/anker20000.jpg"]
+    },
+    {
+      "name": "Bose SoundLink Flex",
+      "description": "Bluetooth speaker with crisp sound and IP67 waterproof rating.",
+      "price": 149.00,
+      "stockQty": 40,
+      "sku": "BOSEFLEX",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/bosesoundlinkflex.jpg"]
+    },
+    {
+      "name": "Garmin Forerunner 265",
+      "description": "GPS running smartwatch with heart-rate monitor and AMOLED display.",
+      "price": 499.99,
+      "stockQty": 18,
+      "sku": "GARMIN265",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/garmin265.jpg"]
+    },
+    {
+      "name": "Fitbit Charge 6",
+      "description": "Fitness tracker with heart-rate monitoring and Google Fit integration.",
+      "price": 179.99,
+      "stockQty": 50,
+      "sku": "FITBITC6",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/fitbitcharge6.jpg"]
+    },
+    {
+      "name": "Beats Studio Buds +",
+      "description": "True wireless earbuds with active noise cancellation.",
+      "price": 169.99,
+      "stockQty": 40,
+      "sku": "BEATSBUDSPLUS",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/beatsstudiobuds.jpg"]
+    },
+    {
+      "name": "Kindle Paperwhite 2023",
+      "description": "E-reader with 6.8-inch display and adjustable warm light.",
+      "price": 159.99,
+      "stockQty": 60,
+      "sku": "KINDLEPW23",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/kindlepaperwhite.jpg"]
+    },
+    {
+      "name": "Corsair K70 Mechanical Keyboard",
+      "description": "RGB gaming keyboard with Cherry MX switches.",
+      "price": 149.99,
+      "stockQty": 30,
+      "sku": "CORSAIRK70",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/corsairk70.jpg"]
+    },
+    {
+      "name": "Dyson Supersonic Hair Dryer",
+      "description": "Fast-drying hair dryer with intelligent heat control.",
+      "price": 429.99,
+      "stockQty": 15,
+      "sku": "DYSONHAIR",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/dysonsupersonic.jpg"]
+    },
+    {
+      "name": "Nespresso Vertuo Next",
+      "description": "Single-serve coffee machine with centrifusion brewing tech.",
+      "price": 199.99,
+      "stockQty": 25,
+      "sku": "NESPRESSONXT",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/nespressonext.jpg"]
+    },
+    {
+      "name": "Samsung Microwave Oven 28L",
+      "description": "Convection microwave oven with grill and auto-cook menus.",
+      "price": 249.99,
+      "stockQty": 20,
+      "sku": "SAMMIC28",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/samsungmicrowave.jpg"]
+    },
+    {
+      "name": "Whirlpool Refrigerator 340L",
+      "description": "Double-door fridge with Inverter Compressor and Frost Free technology.",
+      "price": 999.99,
+      "stockQty": 10,
+      "sku": "WHIRL340L",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/whirlpool340.jpg"]
+    },
+    {
+      "name": "LG Washing Machine 7kg",
+      "description": "Front-load washing machine with AI Direct Drive motor.",
+      "price": 699.99,
+      "stockQty": 12,
+      "sku": "LGWASH7",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/lgwashing7.jpg"]
+    },
+    {
+      "name": "IKEA MALM Bed Frame",
+      "description": "Modern king-size bed frame in white oak finish.",
+      "price": 499.99,
+      "stockQty": 8,
+      "sku": "IKEAMALM",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/ikeamalm.jpg"]
+    },
+    {
+      "name": "Dyson Air Purifier TP09",
+      "description": "Smart air purifier with HEPA filter and Wi-Fi control.",
+      "price": 649.99,
+      "stockQty": 10,
+      "sku": "DYSONTP09",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/dysonairpurifier.jpg"]
+    },
+    {
+      "name": "Apple iPad Pro 11-inch M2",
+      "description": "High-performance tablet with Liquid Retina display and M2 chip.",
+      "price": 1099.99,
+      "stockQty": 22,
+      "sku": "IPADPRO11M2",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/ipadpro11m2.jpg"]
+    },
+    {
+      "name": "Nintendo Switch OLED",
+      "description": "Hybrid gaming console with 7-inch OLED display.",
+      "price": 349.99,
+      "stockQty": 45,
+      "sku": "NINTSWOLED",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/nintendosw.jpg"]
+    },
+    {
+      "name": "PlayStation 5 Disc Edition",
+      "description": "Next-gen gaming console with 4K Blu-ray and ray tracing.",
+      "price": 499.99,
+      "stockQty": 25,
+      "sku": "PS5DISC",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/ps5disc.jpg"]
+    },
+    {
+      "name": "Xbox Series X",
+      "description": "Powerful gaming console with 1 TB SSD and 120 FPS support.",
+      "price": 499.99,
+      "stockQty": 20,
+      "sku": "XBOXSERX",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/xboxseriesx.jpg"]
+    },
+    {
+      "name": "Razer Blade 16",
+      "description": "Premium gaming laptop with RTX 4080 GPU and Mini LED display.",
+      "price": 2899.99,
+      "stockQty": 6,
+      "sku": "RAZER16",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/razerblade16.jpg"]
+    },
+    {
+      "name": "Samsung Galaxy Tab S9",
+      "description": "12.4-inch AMOLED tablet with S-Pen support and Snapdragon 8 Gen 2.",
+      "price": 999.99,
+      "stockQty": 18,
+      "sku": "GALTABS9",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/galaxytabs9.jpg"]
+    },
+    {
+      "name": "Apple AirPods Pro 2",
+      "description": "Noise-cancelling wireless earbuds with Adaptive Transparency mode.",
+      "price": 249.99,
+      "stockQty": 60,
+      "sku": "AIRPODS2PRO",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/airpodspro2.jpg"]
+    },
+    {
+      "name": "Google Nest Thermostat",
+      "description": "Smart home thermostat with energy savings and voice control.",
+      "price": 129.99,
+      "stockQty": 30,
+      "sku": "NESTTHERMO",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/nestthermostat.jpg"]
+    },
+    {
+      "name": "Oculus Quest 3 VR Headset",
+      "description": "All-in-one VR system with improved optics and performance.",
+      "price": 599.99,
+      "stockQty": 15,
+      "sku": "OCULUSQ3",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/oculusquest3.jpg"]
+    },
+    {
+      "name": "DJI Mini 4 Pro Drone",
+      "description": "Lightweight camera drone with 4K HDR video and obstacle avoidance.",
+      "price": 999.00,
+      "stockQty": 10,
+      "sku": "DJIMINI4",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/djimini4.jpg"]
+    },
+    {
+      "name": "Eufy RoboVac G30",
+      "description": "Smart robot vacuum cleaner with Wi-Fi and mapping.",
+      "price": 299.99,
+      "stockQty": 25,
+      "sku": "EUFYG30",
+      "active": true,
+      "images": ["https://cdn.twisty.com/products/eufyg30.jpg"]
+    }
+  ]
+

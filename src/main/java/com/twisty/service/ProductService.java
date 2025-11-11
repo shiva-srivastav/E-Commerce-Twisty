@@ -1,5 +1,7 @@
 package com.twisty.service;
 
+import com.twisty.dto.PageResponse;
+import com.twisty.dto.ProductQuery;
 import com.twisty.dto.ProductRequest;
 import com.twisty.dto.ProductResponse;
 
@@ -10,5 +12,5 @@ public interface ProductService {
     ProductResponse getProductById(Long id);
     ProductResponse updateProduct(Long id, ProductRequest productRequest);
     void deleteProduct(Long id);
-    List<ProductResponse> getAllProducts();
+    PageResponse<ProductResponse> getAllProducts(ProductQuery query);
 }

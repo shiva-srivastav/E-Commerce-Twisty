@@ -1,5 +1,7 @@
 package com.twisty.controller;
 
+import com.twisty.dto.PageResponse;
+import com.twisty.dto.ProductQuery;
 import com.twisty.dto.ProductRequest;
 import com.twisty.dto.ProductResponse;
 import com.twisty.service.ProductService;
@@ -7,9 +9,11 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -32,9 +36,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> getAllProducts() {
-        List<ProductResponse> productResponseList = productService.getAllProducts();
-        return ResponseEntity.status(HttpStatus.OK).body(productResponseList);
+    public ResponseEntity<PageResponse<ProductResponse>> getAllProducts(@ModelAttribute ProductQuery query) {
+        log.info("Fetching all products with filters: {}",  query);
+        PageResponse<ProductResponse> pageResponse = productService.getAllProducts(query);
+        return ResponseEntity.status(HttpStatus.OK).body(pageResponse);
     }
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductRequest request) {
