@@ -1,0 +1,234 @@
+{
+	"info": {
+		"_postman_id": "008d1498-2a5b-401f-a026-982feb3c6358",
+		"name": "twisty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38563324",
+		"_collection_link": "https://shiva7-9153.postman.co/workspace/ECOM~c3242e66-7251-4b63-a5de-57d31ecead66/collection/38563324-008d1498-2a5b-401f-a026-982feb3c6358?action=share&source=collection_link&creator=38563324"
+	},
+	"item": [
+		{
+			"name": "add_product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Apple iPhone 15 Pro\",\r\n  \"description\": \"Apple iPhone 15 Pro with A17 Bionic chip, 256GB storage, and titanium frame.\",\r\n  \"price\": 1299.99,\r\n  \"stockQty\": 25,\r\n  \"sku\": \"IP15PRO256\",\r\n  \"active\": true,\r\n  \"images\": [\r\n    \"https://cdn.twisty.com/products/iphone15pro-front.jpg\",\r\n    \"https://cdn.twisty.com/products/iphone15pro-back.jpg\"\r\n  ]\r\n}\r\n\r\n// {\r\n//   \"name\": \"Wireless Earbuds\",\r\n//   \"description\": \"High-quality earbuds with noise cancellation\",\r\n//   \"price\": -49.99,\r\n//   \"stockQty\": 50,\r\n//   \"sku\": \"EARB123\"\r\n// }\r\n\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_product_by_id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/products/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_product_with_pagination_sorting",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "//curl \"http://localhost:8080/api/v1/products?size=10&sort=price,desc\"\r\n//api/v1/products?page=2&size=20&sort=name,asc\r\n//api/v1/products?q=phone&minPrice=300&maxPrice=1500&sort=price,asc&page=0&size=5",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/products?q=phone&minPrice=300&maxPrice=1500&sort=price,desc&page=0&size=5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "phone"
+						},
+						{
+							"key": "minPrice",
+							"value": "300"
+						},
+						{
+							"key": "maxPrice",
+							"value": "1500"
+						},
+						{
+							"key": "sort",
+							"value": "price,desc"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_product_by_id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Apple iPhone 15 Pro\",\r\n  \"description\": \"Apple iPhone 15 Pro with A17 Bionic chip, 256GB storage, and titanium frame.\",\r\n  \"price\": 1299.99,\r\n  \"stockQty\": 25,\r\n  \"sku\": \"IP15PRO256\",\r\n  \"active\": true,\r\n  \"images\": [\r\n    \"https://cdn.twisty.com/products/iphone15pro-front.jpg\",\r\n    \"https://cdn.twisty.com/products/iphone15pro-back.jpg\"\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/products/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_by_id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/v1/products/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "///api/v1/catalog?q=watch\r\n///api/v1/catalog\r\n///api/v1/catalog?minPrice=100&maxPrice=500\r\n///api/v1/catalog?page=1&size=5",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/catalog?page=1&size=5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"catalog"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
