@@ -37,6 +37,44 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
 
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleProductNotFound(ProductNotFoundException ex, WebRequest request){
+        Map<String, Object> body = new HashMap<>();
+        body.put("timestamp", Instant.now());
+        body.put("path", request.getDescription(false).replace("uri=",""));
+        body.put("code","NOT_FOUND");
+        body.put("message", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(
+            IllegalArgumentException ex, WebRequest request) {
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("timestamp", Instant.now());
+        body.put("path", request.getDescription(false).replace("uri=", ""));
+        body.put("code", "BAD_REQUEST");
+        body.put("message", ex.getMessage());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    @ExceptionHandler(QuantityExceededException.class)
+    public ResponseEntity<Map<String, Object>> handleQuantityExceeded(
+            QuantityExceededException ex, WebRequest request
+    ){
+        Map<String, Object> body = new HashMap<>();
+        body.put("timestamp", Instant.now());
+        body.put("path", request.getDescription(false).replace("uri=", ""));
+        body.put("code", "QUANTITY_EXCEEDED");
+        body.put("message", ex.getMessage());
+        body.put("requestedQuantity", ex.getRequestedQuantity());
+        body.put("availableStock", ex.getAvailableStock());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, Object>> handleGenericException(Exception ex, WebRequest request) {
         Map<String, Object> body = new HashMap<>();
