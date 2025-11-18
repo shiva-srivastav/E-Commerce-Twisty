@@ -1,10 +1,14 @@
 package com.twisty.dto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductResponse {
 
     private Long id;               // Product ID
@@ -15,4 +19,5 @@ public class ProductResponse {
     private String sku;            // SKU code
     private Boolean active;        // Availability status
     private List<String> images;   // Product image URLs
+
 }
