@@ -2,6 +2,7 @@ package com.twisty.controller;
 
 import com.twisty.dto.CatalogQuery;
 import com.twisty.dto.PageResponse;
+import com.twisty.dto.ProductQuery;
 import com.twisty.dto.ProductResponse;
 import com.twisty.service.CatalogService;
 import com.twisty.service.ProductService;
@@ -22,9 +23,9 @@ public class CatalogController {
 
 private final CatalogService catalogService;
 @GetMapping
-public ResponseEntity<PageResponse<ProductResponse>> getCatalog(@ModelAttribute CatalogQuery catalogQuery) {
-    log.info("catalogQuery request received: {}", catalogQuery);
-    PageResponse<ProductResponse> response=catalogService.searchProducts(catalogQuery);
+public ResponseEntity<PageResponse<ProductResponse>> getCatalog(@ModelAttribute ProductQuery query) {
+    log.info("catalogQuery request received: {}", query);
+    PageResponse<ProductResponse> response=catalogService.searchProducts(query);
     return ResponseEntity.status(HttpStatus.OK).body(response);
 }
 }

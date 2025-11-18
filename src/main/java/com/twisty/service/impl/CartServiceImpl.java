@@ -1,134 +1,196 @@
 package com.twisty.service.impl;
 
 import com.twisty.dto.CartLine;
+import com.twisty.dto.CartResponse;
 import com.twisty.dto.CartView;
+import com.twisty.entity.CartItemEntity;
+import com.twisty.entity.ProductEntity;
 import com.twisty.exception.ProductNotFoundException;
 import com.twisty.exception.QuantityExceededException;
-import com.twisty.model.Cart;
-import com.twisty.model.Product;
-import com.twisty.repository.InMemoryCartStore;
-import com.twisty.repository.InMemoryProductStore;
+import com.twisty.repository.CartItemRepository;
+import com.twisty.repository.ProductRepository;
 import com.twisty.service.CartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
 
-    private final InMemoryCartStore cartStore;
-    private final InMemoryProductStore productStore;
+    private final CartItemRepository cartStore;
+    private final ProductRepository productStore;
 
+    @Transactional
     @Override
-    public CartView addOrUpdate(long userId, long productId, int quantity) {
+    public CartResponse addOrUpdate(long userId, long productId, int quantity) {
        var product =productStore.findById(productId)
                .orElseThrow(()->new ProductNotFoundException(productId));
 
        if(Boolean.FALSE.equals(product.getActive())){
            throw new IllegalArgumentException("Product is inactive: "+ productId);
        }
+       CartResponse cartResponse = new CartResponse();
+       var existing = cartStore.findByUserIdAndProductId(userId,productId);
+       int existingQty = (existing==null ? 0 : existing.getQuantity());
+       int finalQty = existingQty + quantity;
 
-       var cart=cartStore.getOrCreate(userId);
-        int existingQty = cart.getItems().getOrDefault(productId, 0);
-        int finalQty = existingQty + quantity;
 
         if (finalQty > product.getStockQty()) {
-            cart.getItems().put(productId, product.getStockQty());
-
-            throw new QuantityExceededException(finalQty, product.getStockQty());
+            log.info("finalQty greater than productQty cartService");
+            saveOrUpdateCart(userId, productId, product.getStockQty());
+            cartResponse.setStatus("LIMIT_REACHED");
+            cartResponse.setMessage(
+                    "Requested quantity (" + finalQty +
+                            ") exceeds available stock (" + product.getStockQty() + "). " +
+                            "Quantity updated to max available."
+            );
+            cartResponse.setCart(buildView(userId));
+            return cartResponse;
         }
 
-        cart.getItems().merge(productId,quantity,Integer::sum);
+        saveOrUpdateCart(userId, productId, finalQty);
 
        log.info("user {} add/update product {}x{}",userId,productId,quantity);
-       return buildView(cart);
+       cartResponse.setCart(buildView(userId));
+        cartResponse.setMessage(
+                "Requested quantity (" + finalQty +
+                        ") available stock (" + product.getStockQty() + "). "
+        );
+        cartResponse.setStatus("SUCCESS");
+        return cartResponse;
     }
+
+    private void saveOrUpdateCart(long userId, long productId, int finalQty) {
+        CartItemEntity item = cartStore.findByUserIdAndProductId(userId,productId);
+        if(item == null){
+            log.info("CartItem is null");
+            item = new CartItemEntity();
+            item.setUserId(userId);
+            item.setProductId(productId);
+        }
+        item.setQuantity(finalQty);
+        log.info("user {} update product {}x{}",item.getId(),userId,productId,finalQty);
+        cartStore.save(item);
+    }
+
 
 
     @Override
     public CartView get(long userId) {
-        return buildView(cartStore.getOrCreate(userId));
+        return buildView(userId);
     }
 
     @Override
     public void remove(long userId, long productId) {
-        var cart = cartStore.getOrCreate(userId);
-        cart.getItems().remove(productId);
+        cartStore.deleteByUserIdAndProductId(userId,productId);
         log.info("User {} removed product {}",userId, productId);
     }
 
+    @Transactional
     @Override
     public void clear(long userId) {
-    cartStore.clear(userId);
+    cartStore.deleteByUserId(userId);
     log.info("User {} clear all items",userId);
     }
 
+    @Transactional
     @Override
-    public CartView setQuantity(long userId, Long productId, int quantity) {
-        Product product =productStore.findById(productId)
+    public CartResponse setQuantity(long userId, Long productId, int quantity) {
+        ProductEntity product =productStore.findById(productId)
                 .orElseThrow(()->new ProductNotFoundException(productId));
-
+        CartResponse  cartResponse = new CartResponse();
         if(!product.getActive()){
             throw new IllegalArgumentException("Product is inactive: "+ productId);
         }
 
-        Cart cart = cartStore.getOrCreate(userId);
-        if(quantity <=0){
-            cart.getItems().remove(productId);
-            return buildView(cart);
+         if(quantity <=0){
+             cartStore.deleteByUserIdAndProductId(userId, productId);
+             cartResponse.setStatus("LIMIT_REACHED");
+             cartResponse.setMessage("Quantiy counter is below 0");
+             cartResponse.setCart(buildView(userId));
+             return cartResponse;
         }
 
         if(quantity > product.getStockQty()){
-            cart.getItems().put(productId, product.getStockQty());
-            throw new QuantityExceededException(quantity, product.getStockQty());
+            saveOrUpdateCart(userId, productId, product.getStockQty());
+            cartResponse.setStatus("LIMIT_REACHED");
+            cartResponse.setMessage("Quantiy updated to max available.");
+            cartResponse.setCart(buildView(userId));
+            return cartResponse;
         }
 
-        cart.getItems().put(productId, quantity);
-        return buildView(cart);
-    }
+        saveOrUpdateCart(userId, productId, quantity);
+        cartResponse.setCart(buildView(userId));
+        cartResponse.setMessage("Quantity updated");
+        cartResponse.setStatus("SUCCESS");
 
+        return cartResponse;
+     }
+
+    @Transactional
     @Override
-    public CartView decreaseQuantity(long userId, Long productId, int decrease) {
-      Cart cart = cartStore.getOrCreate(userId);
-      int existingQty = cart.getItems().getOrDefault(productId, 0);
+    public CartResponse decreaseQuantity(long userId, Long productId, int decrease) {
+      CartItemEntity item = cartStore.findByUserIdAndProductId(userId,productId);
+      CartResponse cartResponse = new CartResponse();
 
-     if(existingQty == 0){
-         throw new IllegalArgumentException("Product not in cart: "+ productId);
-     }
+      if(item == null){
+          throw new IllegalArgumentException("Product not in cart: "+ productId);
+      }
+      if(decrease <=0){
+          cartResponse.setCart(buildView(userId));
+          cartResponse.setMessage("You cannot provide value less than zero");
+          cartResponse.setStatus("LIMIT_UNAVAILABLE");
+          return cartResponse;
+      }
 
-     int finalQty = existingQty - decrease;
-     if(finalQty <=0){
-         cart.getItems().remove(productId);
-     } else{
-         cart.getItems().put(productId, finalQty);
-     }
-     return buildView(cart);
-
+      int finalQty = item.getQuantity()- decrease;
+      if(finalQty < 0){
+          cartStore.deleteByUserIdAndProductId(userId,productId);
+          cartResponse.setCart(buildView(userId));
+          cartResponse.setMessage("Quantity updated to max available.");
+          cartResponse.setStatus("LIMIT_REACHED");
+          return cartResponse;
+      }else{
+          item.setQuantity(finalQty);
+          cartStore.save(item);
+      }
+     cartResponse.setCart(buildView(userId));
+      cartResponse.setMessage("Quantity updated");
+      cartResponse.setStatus("SUCCESS");
+      return cartResponse;
     }
 
-    private CartView buildView(Cart cart) {
-        var lines =new ArrayList<CartLine>();
-        BigDecimal subtotal= BigDecimal.ZERO;
-        int totalItems=0;
+    private CartView buildView(long userId) {
+        List<CartItemEntity> items = cartStore.findByUserId(userId);
+        List<CartLine> lines = new ArrayList<>();
+        BigDecimal subtotal =BigDecimal.ZERO;
+        int totalItems = 0;
+        for (CartItemEntity item : items) {
+            ProductEntity product = productStore.findById(item.getProductId())
+                    .orElse(null);
+            if(product == null || !Boolean.TRUE.equals(product.getActive())){
+                continue;
+            }
+            int qty = item.getQuantity();
+            lines.add(new CartLine(
+                    product.getId(),
+                    product.getName(),
+                    product.getPrice(),
+                    qty
+            ));
 
-        for(var e : cart.getItems().entrySet()){
-            var productOpt =productStore.findById(e.getKey());
-            if(productOpt.isEmpty()) continue;
-            var p = productOpt.get();
-
-            if(!Boolean.TRUE.equals(p.getActive())) continue;
-
-            int qty =e.getValue();
-            lines.add(new CartLine(p.getId(), p.getName(), p.getPrice(),qty));
-            subtotal =subtotal.add(p.getPrice().multiply(BigDecimal.valueOf(qty)));
-            totalItems+=qty;
+            subtotal = subtotal.add(product.getPrice().multiply(BigDecimal.valueOf(qty)));
+            totalItems += qty;
         }
-        return new CartView(lines, subtotal, totalItems);
+        return new CartView(lines,subtotal,totalItems);
     }
 
 }

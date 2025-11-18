@@ -1,6 +1,7 @@
 package com.twisty.controller;
 
 import com.twisty.dto.CartItemDTO;
+import com.twisty.dto.CartResponse;
 import com.twisty.dto.CartView;
 import com.twisty.service.CartService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ public class CartController {
     }
 
     @PostMapping("/items")
-    public ResponseEntity<CartView> addItem(@Valid @RequestBody CartItemDTO dto, HttpServletRequest request){
+    public ResponseEntity<CartResponse> addItem(@Valid @RequestBody CartItemDTO dto, HttpServletRequest request){
         long userId = extractUserId(request);
         var view =cartService.addOrUpdate(userId,dto.getProductId(),dto.getQuantity());
         return ResponseEntity.status(HttpStatus.OK).body(view);
@@ -60,7 +61,7 @@ public class CartController {
     }
 
     @PutMapping("/items/{productId}")
-    public ResponseEntity<CartView> setQuantity(
+    public ResponseEntity<CartResponse> setQuantity(
             @PathVariable Long productId,
             @RequestBody Map<String, Integer> body,
             HttpServletRequest request
@@ -68,17 +69,17 @@ public class CartController {
         long userId = extractUserId(request);
         int quantity = body.get("quantity");
 
-        CartView view = cartService.setQuantity(userId, productId, quantity);
+        CartResponse view = cartService.setQuantity(userId, productId, quantity);
         return ResponseEntity.status(HttpStatus.OK).body(view);
     }
 
     @PatchMapping("/items/{productId}")
-    public ResponseEntity<CartView> decreaseQuantity(
+    public ResponseEntity<CartResponse> decreaseQuantity(
             @PathVariable Long productId,
             @RequestParam(defaultValue = "1") int decrease,
             HttpServletRequest request){
         long userId = extractUserId(request);
-        CartView view=cartService.decreaseQuantity(userId, productId,decrease);
+        CartResponse view=cartService.decreaseQuantity(userId, productId,decrease);
         return  ResponseEntity.status(HttpStatus.OK).body(view);
     }
 
