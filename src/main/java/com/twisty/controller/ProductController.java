@@ -1,17 +1,15 @@
 package com.twisty.controller;
 
-import com.twisty.dto.PageResponse;
-import com.twisty.dto.ProductQuery;
-import com.twisty.dto.ProductRequest;
-import com.twisty.dto.ProductResponse;
+import com.twisty.dto.productDTO.PageResponse;
+import com.twisty.dto.productDTO.ProductQuery;
+import com.twisty.dto.productDTO.ProductRequest;
+import com.twisty.dto.productDTO.ProductResponse;
 import com.twisty.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.List;
 
 @Slf4j
 @RestController

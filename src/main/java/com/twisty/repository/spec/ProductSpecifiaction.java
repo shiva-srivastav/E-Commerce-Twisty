@@ -1,6 +1,6 @@
 package com.twisty.repository.spec;
 
-import com.twisty.dto.ProductQuery;
+import com.twisty.dto.productDTO.ProductQuery;
 import com.twisty.entity.ProductEntity;
 import jakarta.persistence.criteria.Expression;
 import jakarta.persistence.criteria.Predicate;

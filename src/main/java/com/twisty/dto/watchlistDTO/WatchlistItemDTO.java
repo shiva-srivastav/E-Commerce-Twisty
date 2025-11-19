@@ -1,4 +1,4 @@
-package com.twisty.dto;
+package com.twisty.dto.watchlistDTO;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

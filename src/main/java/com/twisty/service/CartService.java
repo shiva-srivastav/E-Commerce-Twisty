@@ -1,7 +1,7 @@
 package com.twisty.service;
 
-import com.twisty.dto.CartResponse;
-import com.twisty.dto.CartView;
+import com.twisty.dto.cartDTO.CartResponse;
+import com.twisty.dto.cartDTO.CartView;
 
 public interface CartService {
     CartResponse addOrUpdate(long userId, long productId, int quantity);

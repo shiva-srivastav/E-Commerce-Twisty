@@ -1,7 +1,7 @@
 package com.twisty.controller;
 
-import com.twisty.dto.WatchlistItemDTO;
-import com.twisty.dto.WatchlistView;
+import com.twisty.dto.watchlistDTO.WatchlistItemDTO;
+import com.twisty.dto.watchlistDTO.WatchlistView;
 import com.twisty.service.WatchlistService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

@@ -1,6 +1,6 @@
 package com.twisty.service;
 
-import com.twisty.dto.WatchlistView;
+import com.twisty.dto.watchlistDTO.WatchlistView;
 
 public interface WatchlistService {
     WatchlistView addProduct(long userId, long productId);

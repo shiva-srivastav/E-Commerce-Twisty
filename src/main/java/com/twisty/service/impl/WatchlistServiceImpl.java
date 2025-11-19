@@ -1,7 +1,7 @@
 package com.twisty.service.impl;
 
-import com.twisty.dto.WatchlistItemView;
-import com.twisty.dto.WatchlistView;
+import com.twisty.dto.watchlistDTO.WatchlistItemView;
+import com.twisty.dto.watchlistDTO.WatchlistView;
 import com.twisty.exception.ProductNotFoundException;
 import com.twisty.entity.ProductEntity;
 import com.twisty.entity.WatchlistItemEntity;

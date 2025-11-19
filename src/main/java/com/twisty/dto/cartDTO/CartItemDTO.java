@@ -1,4 +1,4 @@
-package com.twisty.dto;
+package com.twisty.dto.cartDTO;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

@@ -1,8 +1,8 @@
 package com.twisty.controller;
 
-import com.twisty.dto.CartItemDTO;
-import com.twisty.dto.CartResponse;
-import com.twisty.dto.CartView;
+import com.twisty.dto.cartDTO.CartItemDTO;
+import com.twisty.dto.cartDTO.CartResponse;
+import com.twisty.dto.cartDTO.CartView;
 import com.twisty.service.CartService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

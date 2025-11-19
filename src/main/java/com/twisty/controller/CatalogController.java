@@ -1,11 +1,9 @@
 package com.twisty.controller;
 
-import com.twisty.dto.CatalogQuery;
-import com.twisty.dto.PageResponse;
-import com.twisty.dto.ProductQuery;
-import com.twisty.dto.ProductResponse;
+import com.twisty.dto.productDTO.PageResponse;
+import com.twisty.dto.productDTO.ProductQuery;
+import com.twisty.dto.productDTO.ProductResponse;
 import com.twisty.service.CatalogService;
-import com.twisty.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

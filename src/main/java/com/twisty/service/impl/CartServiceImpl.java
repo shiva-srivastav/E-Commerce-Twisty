@@ -1,19 +1,17 @@
 package com.twisty.service.impl;
 
-import com.twisty.dto.CartLine;
-import com.twisty.dto.CartResponse;
-import com.twisty.dto.CartView;
+import com.twisty.dto.cartDTO.CartLine;
+import com.twisty.dto.cartDTO.CartResponse;
+import com.twisty.dto.cartDTO.CartView;
 import com.twisty.entity.CartItemEntity;
 import com.twisty.entity.ProductEntity;
 import com.twisty.exception.ProductNotFoundException;
-import com.twisty.exception.QuantityExceededException;
 import com.twisty.repository.CartItemRepository;
 import com.twisty.repository.ProductRepository;
 import com.twisty.service.CartService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;

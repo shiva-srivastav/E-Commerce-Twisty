@@ -1,8 +1,8 @@
 package com.twisty.service.impl;
 
-import com.twisty.dto.PageResponse;
-import com.twisty.dto.ProductQuery;
-import com.twisty.dto.ProductResponse;
+import com.twisty.dto.productDTO.PageResponse;
+import com.twisty.dto.productDTO.ProductQuery;
+import com.twisty.dto.productDTO.ProductResponse;
 import com.twisty.entity.ProductEntity;
 import com.twisty.repository.ProductRepository;
 import com.twisty.repository.spec.ProductSpecifiaction;

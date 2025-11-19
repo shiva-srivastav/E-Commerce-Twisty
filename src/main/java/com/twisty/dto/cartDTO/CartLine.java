@@ -1,4 +1,4 @@
-package com.twisty.dto;
+package com.twisty.dto.cartDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,5 +1,6 @@
 package com.twisty.exception;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -71,6 +72,45 @@ public class GlobalExceptionHandler {
         body.put("message", ex.getMessage());
         body.put("requestedQuantity", ex.getRequestedQuantity());
         body.put("availableStock", ex.getAvailableStock());
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleAddressNotFound(AddressNotFoundException ex,
+                                                                     HttpServletRequest request) {
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("path", request.getRequestURI());
+        body.put("code", "ADDRESS_NOT_FOUND");
+        body.put("message", ex.getMessage());
+        body.put("timestamp", Instant.now().toString());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleOrderNotFound(OrderNotFoundException ex,
+                                                                   HttpServletRequest request) {
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("path", request.getRequestURI());
+        body.put("code", "ORDER_NOT_FOUND");
+        body.put("message", ex.getMessage());
+        body.put("timestamp", Instant.now().toString());
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+    @ExceptionHandler(EmptyCartException.class)
+    public ResponseEntity<Map<String, Object>> handleEmptyCart(EmptyCartException ex,
+                                                               HttpServletRequest request) {
+
+        Map<String, Object> body = new HashMap<>();
+        body.put("path", request.getRequestURI());
+        body.put("code", "EMPTY_CART");
+        body.put("message", ex.getMessage());
+        body.put("timestamp", Instant.now().toString());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
